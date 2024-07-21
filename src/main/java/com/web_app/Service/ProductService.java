@@ -1,6 +1,8 @@
 package com.web_app.Service;
 
 import com.web_app.model.Product;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.List;
 
 @Service
 public class ProductService {
-
+    Logger logger = LoggerFactory.getLogger(ProductService.class);
     private final List<Product> products = new ArrayList<>(Arrays.asList(
             new Product(101, "Iphone", 50000),
             new Product(102, "Google", 40000),
@@ -21,10 +23,13 @@ public class ProductService {
     }
 
     public Product getProductByID(int prodId) {
-        return products.stream()
+
+        Product  product =  products.stream()
                 .filter(p -> p.getProdId() == prodId)
                 .findFirst()
                 .orElse(new Product(100, "not found", 0));
+        logger.info("Product fetched successfully for productId - {}",prodId);
+        return product;
     }
 
     public void addProd(Product prod) {
