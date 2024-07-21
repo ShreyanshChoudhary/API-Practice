@@ -28,6 +28,11 @@ public class ProductService {
                 .filter(p -> p.getProdId() == prodId)
                 .findFirst()
                 .orElse(new Product(100, "not found", 0));
+        if(product.getProdName().contains("not")){
+            logger.info("Product is not available for productId - {}",prodId);
+            return product;
+        }
+
         logger.info("Product fetched successfully for productId - {}",prodId);
         return product;
     }
