@@ -27,8 +27,8 @@ public class ProductService {
         Product  product =  products.stream()
                 .filter(p -> p.getProdId() == prodId)
                 .findFirst()
-                .orElse(new Product(100, "not found", 0));
-        if(product.getProdName().contains("not")){
+                .orElse(new Product(prodId, "not found", 0));
+        if(product.getProdName().contains("not found")){
             logger.info("Product is not available for productId - {}",prodId);
             return product;
         }
