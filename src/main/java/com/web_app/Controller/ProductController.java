@@ -25,7 +25,7 @@ public class ProductController {
     }
 
     @GetMapping("/{prodId}")
-    public Product getProductByID(@PathVariable int prodId) {
+    public Product getProductByID(@PathVariable Integer prodId) {
         logger.info("Started fetching pproduct for prodcutId - {}",prodId);
         return service.getProductByID(prodId);
     }
@@ -36,13 +36,13 @@ public class ProductController {
         return ResponseEntity.ok("Product added successfully");
     }
     @DeleteMapping
-    public ResponseEntity<String> deleteprod(@Valid @RequestBody Product prod){
-        service.deleteProd(prod);
+    public ResponseEntity<String> deleteprod(@Valid @RequestBody Integer prodId){
+        service.deleteProd(prodId);
         return  ResponseEntity.ok("Product deleted sucessfully");
     }
     @PutMapping
-    public ResponseEntity<String> updateprod(@Valid @RequestBody Product prod){
-        service.updateProd(prod);
+    public ResponseEntity<String> updateprod(@Valid @RequestBody Product prod,Integer prodId){
+        service.updateProd(prod,prodId);
         return ResponseEntity.ok("Product updated Sucessfully");
     }
 }
