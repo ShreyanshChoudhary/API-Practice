@@ -30,7 +30,7 @@ public class ProductController {
         return service.getProductByID(prodId);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<String> addProd(@Valid @RequestBody Product prod) {
         service.addProd(prod);
         return ResponseEntity.ok("Product added successfully");
