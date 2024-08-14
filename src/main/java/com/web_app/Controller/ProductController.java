@@ -19,18 +19,18 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
-    @GetMapping
+    @GetMapping("/getdata")
     public List<Product> getProducts() {
         return service.getProducts();
     }
 
     @GetMapping("/{prodId}")
     public Product getProductByID(@PathVariable Integer prodId) {
-        logger.info("Started fetching pproduct for prodcutId - {}",prodId);
+        logger.info("Started fetching product for prodcutId - {}",prodId);
         return service.getProductByID(prodId);
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<String> addProd(@Valid @RequestBody Product prod) {
         service.addProd(prod);
         return ResponseEntity.ok("Product added successfully");

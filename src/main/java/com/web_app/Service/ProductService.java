@@ -28,7 +28,7 @@ public class ProductService {
     @Autowired
     ProductRepo repo;
 
-    public Product getProductByID(int prodId) {
+    public Product getProductByID(Integer prodId) {
 
       /*  Product  product =  products.stream()
                 .filter(p -> p.getProdId() == prodId)
@@ -58,7 +58,8 @@ public class ProductService {
 repo.deleteById(prodId);    }
 
     public void updateProd(Product prod,Integer prodId) {
-        logger.info("Product with prodId{} updated successfully",prodId);
-     repo.save(prod);
+        logger.info("product with productId - {} updated succesfully", prodId);
+
+        repo.save(prod);
     }
 }
